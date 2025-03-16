@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IS_Studio_Miniaturas", "IS_Studio_Miniaturas\IS_Studio_Miniaturas.csproj", "{55773786-0E24-4DDB-8203-4347DF507498}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		2017 Debug|Any CPU = 2017 Debug|Any CPU
+		2017 Release|Any CPU = 2017 Release|Any CPU
+		2018 Debug|Any CPU = 2018 Debug|Any CPU
+		2018 Release|Any CPU = 2018 Release|Any CPU
+		2019 Debug|Any CPU = 2019 Debug|Any CPU
+		2019 Release|Any CPU = 2019 Release|Any CPU
+		2020 Debug|Any CPU = 2020 Debug|Any CPU
+		2020 Release|Any CPU = 2020 Release|Any CPU
+		2021 Debug|Any CPU = 2021 Debug|Any CPU
+		2021 Release|Any CPU = 2021 Release|Any CPU
+		2022 Debug|Any CPU = 2022 Debug|Any CPU
+		2022 Release|Any CPU = 2022 Release|Any CPU
+		2024 Debug|Any CPU = 2024 Debug|Any CPU
+		2024 Release|Any CPU = 2024 Release|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		X7 Debug|Any CPU = X7 Debug|Any CPU
+		X7 Release|Any CPU = X7 Release|Any CPU
+		X8 Debug|Any CPU = X8 Debug|Any CPU
+		X8 Release|Any CPU = X8 Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55773786-0E24-4DDB-8203-4347DF507498}.2017 Debug|Any CPU.ActiveCfg = 2017 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2017 Debug|Any CPU.Build.0 = 2017 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2017 Release|Any CPU.ActiveCfg = 2017 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2017 Release|Any CPU.Build.0 = 2017 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2018 Debug|Any CPU.ActiveCfg = 2018 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2018 Debug|Any CPU.Build.0 = 2018 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2018 Release|Any CPU.ActiveCfg = 2018 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2018 Release|Any CPU.Build.0 = 2018 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2019 Debug|Any CPU.ActiveCfg = 2019 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2019 Debug|Any CPU.Build.0 = 2019 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2019 Release|Any CPU.ActiveCfg = 2019 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2019 Release|Any CPU.Build.0 = 2019 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2020 Debug|Any CPU.ActiveCfg = 2020 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2020 Debug|Any CPU.Build.0 = 2020 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2020 Release|Any CPU.ActiveCfg = 2020 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2020 Release|Any CPU.Build.0 = 2020 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2021 Debug|Any CPU.ActiveCfg = 2021 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2021 Debug|Any CPU.Build.0 = 2021 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2021 Release|Any CPU.ActiveCfg = 2021 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2021 Release|Any CPU.Build.0 = 2021 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2022 Debug|Any CPU.ActiveCfg = 2022 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2022 Debug|Any CPU.Build.0 = 2022 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2022 Release|Any CPU.ActiveCfg = 2022 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2022 Release|Any CPU.Build.0 = 2022 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2024 Debug|Any CPU.ActiveCfg = 2024 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2024 Debug|Any CPU.Build.0 = 2024 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2024 Release|Any CPU.ActiveCfg = 2024 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.2024 Release|Any CPU.Build.0 = 2024 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X7 Debug|Any CPU.ActiveCfg = X7 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X7 Debug|Any CPU.Build.0 = X7 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X7 Release|Any CPU.ActiveCfg = X7 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X7 Release|Any CPU.Build.0 = X7 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X8 Debug|Any CPU.ActiveCfg = X8 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X8 Debug|Any CPU.Build.0 = X8 Debug|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X8 Release|Any CPU.ActiveCfg = X8 Release|Any CPU
+		{55773786-0E24-4DDB-8203-4347DF507498}.X8 Release|Any CPU.Build.0 = X8 Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

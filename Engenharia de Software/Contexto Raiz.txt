@@ -1,0 +1,444 @@
+AppUI.xslt:
+--------------------
+
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:frmwrk="Corel Framework Data">
+  <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+
+  <frmwrk:uiconfig>
+   
+    <frmwrk:applicationInfo userConfiguration="true" />
+  </frmwrk:uiconfig>
+
+  <!-- Copy everything -->
+  <xsl:template match="node()|@*">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="uiConfig/items">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+		<!-- Defina o botão que conterá um menu igual em todos os projetos. -->
+		<!-- TituloDoBotaoParaOsProjetos -->
+		<itemData guid="f1d3d1d0-cc8d-4f04-91cb-7112255b8af1" noBmpOnMenu="true"
+				  type="flyout"
+				  dynamicCategory="2cc24a3e-fe24-4708-9a74-9c75406eebcd"
+				  userCaption="IS Studio"
+				  enable="true"
+				  flyoutBarRef="FB727225-CEA7-4D27-BB27-52C687B53029"
+                />
+		<!-- Defina o botão que exibe o Docker. -->
+		<!-- GUID A -->
+		<!-- GUID C -->
+		<!-- NomeDaDocker -->
+		<itemData guid="B29B4279-261F-41A3-83BC-56364E5CAF9C" noBmpOnMenu="true"
+            type="checkButton"
+            check="*Docker('837D02AB-8D29-4F2D-A9AF-C00B2B3D56CD')"
+            dynamicCategory="2cc24a3e-fe24-4708-9a74-9c75406eebcd"
+            userCaption="IS Miniaturas"
+            enable="true"/>
+
+      <!-- Defina o controle web que será colocado na Docker -->
+	  <!-- GUID B -->
+      <itemData guid="C066512C-DF52-4510-875B-D2F4173DE5DF"
+                type="wpfhost"
+                hostedType="Addons\IS_Studio_Miniaturas\IS_Studio_Miniaturas.dll,IS_Studio_Miniaturas.DockerUI"
+                enable="true"/>
+
+    </xsl:copy>
+  </xsl:template>
+	<!-- Defina o nome do menu para todos os projetos-->
+	<!-- GUID C -->
+	<!-- NomeDosProjetos -->
+	<xsl:template match="uiConfig/commandBars">
+		<xsl:copy>
+			<xsl:apply-templates select="node()|@*"/>
+
+			<commandBarData guid="837D02AB-8D29-4F2D-A9AF-C00B2B3D56CD"
+							type="menu"
+							nonLocalizableName="IS Studio"
+							flyout="true">
+				<menu>
+					<!--Here change to new item-->
+					<!--<item guidRef="DF67BEBE-6551-4F3B-BE5B-1BF46E16AB67"/>-->
+				</menu>
+			</commandBarData>
+		</xsl:copy>
+	</xsl:template>
+	<xsl:template match="uiConfig/commandBars/commandBarData[guid='FB727225-CEA7-4D27-BB27-52C687B53029']/menu">
+		<xsl:copy>
+			<xsl:apply-templates select="node()|@*"/>
+
+					<!--Here change to new item-->
+					<item guidRef="5a2f0cfc-0388-46c7-861a-94d7b58ad00c"/>
+
+		</xsl:copy>
+	</xsl:template>
+  <xsl:template match="uiConfig/dockers">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+
+		<!-- Defina o Docker web -->
+		<!-- GUID C -->
+		<!-- TituloDaDocker -->
+		<dockerData guid="837D02AB-8D29-4F2D-A9AF-C00B2B3D56CD"
+                  userCaption="Miniaturas"
+                  wantReturn="true"
+                  focusStyle="noThrow">
+        <container>
+          <!-- Adicione o controle da página web ao Docker. -->
+		  <!-- GUID B -->
+          <item dock="fill" margin="0,0,0,0" guidRef="C066512C-DF52-4510-875B-D2F4173DE5DF"/>
+        </container>
+      </dockerData>
+    </xsl:copy>
+  </xsl:template>
+
+</xsl:stylesheet>
+
+################################################################################################################
+CorelDrw.addon:
+------------------
+
+################################################################################################################
+
+DockerUI.xaml:
+------------------
+
+<UserControl x:Class="IS_Studio_Miniaturas.DockerUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IS_Studio_Miniaturas"
+             mc:Ignorable="d" 
+             MinWidth="225" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <StackPanel Orientation="Vertical" Margin="2">
+
+        <!-- Inicio de Navegação Com Tab Control -->
+        <StackPanel Margin="5,0,0,0">
+            <TabControl SelectionChanged="TabControl_SelectionChanged"
+                        BorderThickness="0">
+                <TabItem Header="Principal" Width="80">
+                    <!-- Conteúdo da primeira aba -->
+                    <!-- <TextBlock Text="Conteúdo de modelagem." /> -->
+                </TabItem>
+                <TabItem Header="Ajuda" Width="60">
+                    <!-- Conteúdo da segunda aba -->
+                    <!-- <TextBlock Text="Conteúdo de desenho." /> -->
+                </TabItem>
+                <TabItem Header="Sobre" Width="60">
+                    <!-- Conteúdo da segunda aba -->
+                    <!-- <TextBlock Text="Conteúdo de catalogo." /> -->
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal"
+                    Margin="5,10,0,0"
+                    >
+            <Frame
+                x:Name="ContainerAbas"
+                NavigationUIVisibility="Hidden"
+                MinWidth="225"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+
+################################################################################################################
+
+DockerUI.xaml.cs
+--------------------
+
+using System;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using corel = Corel.Interop.VGCore;
+
+namespace IS_Studio_Miniaturas
+{
+    public partial class DockerUI : UserControl
+    {
+        private corel.Application corelApp;
+
+        public DockerUI(object app)
+        {
+            InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ContainerAbas.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FEFE00"));
+        }
+
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Uri destinationPage = null;
+
+            // Lógica para lidar com a mudança de seleção da aba
+            if (e.Source is System.Windows.Controls.TabControl tabControl)
+            {
+                if (tabControl.SelectedItem is System.Windows.Controls.TabItem selectedTab)
+                {
+                    // Aqui você pode atualizar o conteúdo com base na aba selecionada
+                    if (selectedTab.Header.ToString() == "Principal")
+                    {
+                        destinationPage = new Uri("Views\\PrincipalView.xaml", UriKind.Relative);
+                    }
+                    else if (selectedTab.Header.ToString() == "Ajuda")
+                    {
+                        //destinationPage = new Uri("Views\\AjudaView.xaml", UriKind.Relative);
+                    }
+                    else if (selectedTab.Header.ToString() == "Sobre")
+                    {
+                        //destinationPage = new Uri("Views\\SobreView.xaml", UriKind.Relative);
+                    }
+
+                    if (destinationPage != null)
+                    {
+                        ContainerAbas.Source = destinationPage;
+                        ContainerAbas.Navigate(ContainerAbas.Source, corelApp);
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+################################################################################################################
+Extensions.cs:
+----------------
+
+using Corel.Interop.VGCore;
+using System;
+
+namespace IS_Studio_Miniaturas
+{
+    public static class Extensions
+    {
+        /// <summary>
+        /// Active optimization features, and start a command group
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="commandGroup"></param>
+        /// <param name="optimization"></param>
+        /// <param name="enableEvents"></param>
+        /// <param name="preservSeletion"></param>
+        public static void BeginDraw(this Corel.Interop.VGCore.Application app, bool commandGroup = true, bool optimization = true, bool enableEvents = false, bool preservSeletion = true)
+        {
+            if (app.ActiveDocument != null)
+            {
+                if (commandGroup)
+                    app.ActiveDocument.BeginCommandGroup();
+                if (preservSeletion)
+                    app.ActiveDocument.PreserveSelection = preservSeletion;
+            }
+
+            app.Optimization = optimization;
+            app.EventsEnabled = enableEvents;
+        }
+        /// <summary>
+        /// Desables optimization features, close the command group and reflesh UI
+        /// </summary>
+        /// <param name="app"></param>
+        public static void EndDraw(this Corel.Interop.VGCore.Application app)
+        {
+            if (app.ActiveDocument != null)
+            {
+                app.ActiveDocument.EndCommandGroup();
+                app.ActiveDocument.PreserveSelection = false;
+            }
+            app.Optimization = false;
+            app.EventsEnabled = true;
+            app.Refresh();
+        }
+    }
+}
+
+################################################################################################################
+
+MessageBox.cs:
+----------------
+
+namespace IS_Studio_Miniaturas
+{
+    public static class MessageBox
+    {
+        public enum DialogButtons
+        {
+            Ok = 0,
+            OkCancel = 1,
+            AbortTryIgnor = 2,
+            YesNoCancel = 3,
+            YesNo = 4,
+            TryAgainCancel = 5,
+            CancelTryAgainContinue = 6,
+            None = 7
+        }
+        public enum DialogResult
+        {
+            Ok = 1,
+            CancelClose = 2,
+            Abort = 3,
+            TryAgain = 4,
+            Ignor = 5,
+            Yes = 6,
+            No = 7,
+            TryAgainContinue = 10
+        }
+
+        /// <summary>
+        /// Displays a message box that has a message and that returns a result.
+        /// </summary>
+        /// <param name="message">
+        /// A System.String that specifies the text to display.</param>
+        /// <returns> A MessageBoxResult value that specifies which message box button
+        ///     is clicked by the user.</returns>
+        public static DialogResult MsgShow(this Corel.Interop.VGCore.Application corelApp, string message)
+        {
+            return corelApp.MsgShow(message, "", DialogButtons.Ok);
+        }
+
+        /// <summary>
+        /// Displays a message box that has a message and title bar caption; and that returns
+        ///    a result.
+        /// </summary>
+        /// <param name="message">A System.String that specifies the text to display.</param>
+        /// <param name="caption">A System.String that specifies the title bar caption to display.</param>
+        /// <returns>  A MessageBoxResult value that specifies which message box button
+        ///     is clicked by the user.</returns>
+        public static DialogResult MsgShow(this Corel.Interop.VGCore.Application corelApp, string message, string caption)
+        {
+            return corelApp.MsgShow(message, caption, DialogButtons.Ok);
+        }
+
+        /// <summary>
+        ///   Displays a message box that has a message, title bar caption, button, and icon;
+        ///     and that returns a result.
+        /// </summary>
+        /// <param name="message">A System.String that specifies the text to display.</param>
+        /// <param name="caption"A System.String that specifies the title bar caption to display.></param>
+        /// <param name="buttons">A MessageBoxButton value that specifies which button or buttons
+        ///     to display.</param>
+        /// <returns>A MessageBoxResult value that specifies which message box button
+        ///    is clicked by the user.</returns>
+        public static DialogResult MsgShow(this Corel.Interop.VGCore.Application corelApp, string message, string caption, DialogButtons buttons)
+        {
+
+            try
+            {
+#if X7
+                int result = (int)System.Windows.MessageBox.Show(message,caption,(System.Windows.MessageBoxButton)((int)buttons));
+
+#elif X8
+                int result = (int)System.Windows.MessageBox.Show(message,caption,(System.Windows.MessageBoxButton)((int)buttons));
+#else
+                int result = corelApp.FrameWork.ShowMessageBox(message, caption, (int)buttons);
+
+#endif
+                return (DialogResult)result;
+            }
+            catch { return DialogResult.Ignor; }
+        }
+
+
+    }
+}
+
+
+################################################################################################################
+
+UserUI.xslt:
+---------------------
+
+<?xml version="1.0"?>
+
+<xsl:stylesheet version="1.0"
+								xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+								xmlns:frmwrk="Corel Framework Data"
+								exclude-result-prefixes="frmwrk">
+  <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+	
+  <!-- Use these elements for the framework to move the container from the app config file to the user config file -->
+  <!-- Since these elements use the frmwrk name space, they will not be executed when the XSLT is applied to the user config file -->
+  <frmwrk:uiconfig>
+    <!-- The Application Info should always be the topmost frmwrk element -->
+    <frmwrk:compositeNode xPath="/uiConfig/commandBars/commandBarData[@guid='cdb9ea9c-223e-4865-97a6-31c007c69674']"/>
+	  <!-- Ours command bar frmwrk element-->
+	  <frmwrk:compositeNode xPath="/uiConfig/commandBars/commandBarData[@guid='FB727225-CEA7-4D27-BB27-52C687B53029']"/>
+    <!--<frmwrk:compositeNode xPath="/uiConfig/commandBars/commandBarData[@guid='f455d4da-90b9-45c9-aaf9-77aa5f69384d']"/>-->
+    <frmwrk:compositeNode xPath="/uiConfig/frame"/>
+  </frmwrk:uiconfig>
+	<!-- Copy everything -->
+	<xsl:template match="node()|@*">
+		<xsl:copy>
+			<xsl:apply-templates select="node()|@*"/>
+		</xsl:copy>
+	</xsl:template>
+	<!-- Helper to insert a new item into a menu/toolbar -->
+	<xsl:template match="node()|@*" mode="insert-item">
+		<xsl:param name="after"></xsl:param>
+		<xsl:param name="before"></xsl:param>
+		<xsl:param name="content"></xsl:param>
+		<xsl:copy>
+			<xsl:apply-templates select="@*"/>
+			<xsl:for-each select="node()">
+				<xsl:if test="name()='item' and @guidRef=$before">
+					<xsl:copy-of select="$content"/>
+				</xsl:if>
+				<xsl:copy>
+					<xsl:apply-templates select="node()|@*"/>
+				</xsl:copy>
+				<xsl:if test="name()='item' and @guidRef=$after">
+					<xsl:copy-of select="$content"/>
+				</xsl:if>
+			</xsl:for-each>
+			<xsl:if test="not(./item[@guidRef=$after]) and not(./item[@guidRef=$before])">
+				<xsl:copy-of select="$content"/>
+			</xsl:if>
+		</xsl:copy>
+	</xsl:template>
+	<xsl:template match="commandBarData[@guid='cdb9ea9c-223e-4865-97a6-31c007c69674']/menu">
+		<xsl:apply-templates  mode="insert-item" select=".">
+			
+			<xsl:with-param name="content">
+				
+		<!-- Make sure we don't read the menu item it it already exists -->
+		<xsl:if test="not(./item[@guidRef='f1d3d1d0-cc8d-4f04-91cb-7112255b8af1'])">
+			<item guidRef="f1d3d1d0-cc8d-4f04-91cb-7112255b8af1"/>
+		</xsl:if>
+		</xsl:with-param>
+		<xsl:with-param name="after" select = "'47cc9a2d-0b7a-4df1-a686-ea3aa21b4631'"/>
+			
+		</xsl:apply-templates>
+	</xsl:template>
+	
+	<!-- Put the new command at the end of the 'Bonus630 dockers' menu -->
+	<xsl:template match="commandBarData[@guid='FB727225-CEA7-4D27-BB27-52C687B53029']/menu">
+		<xsl:apply-templates  mode="insert-item" select=".">
+			<xsl:with-param name="content">
+			<!-- Certifique-se de que não lemos o item do menu se ele já existir -->
+			<!-- GUID A	-->
+			<xsl:if test="not(./item[@guidRef='B29B4279-261F-41A3-83BC-56364E5CAF9C'])">
+				<item guidRef="B29B4279-261F-41A3-83BC-56364E5CAF9C"/>
+			</xsl:if>
+			</xsl:with-param>
+		</xsl:apply-templates>
+	</xsl:template>
+  
+</xsl:stylesheet>
+
+################################################################################################################

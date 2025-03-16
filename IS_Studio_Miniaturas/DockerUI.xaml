@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="IS_Studio_Miniaturas.DockerUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IS_Studio_Miniaturas"
+             mc:Ignorable="d" 
+             MinWidth="225" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <StackPanel Orientation="Vertical" Margin="2">
+
+        <!-- Inicio de Navegação Com Tab Control -->
+        <StackPanel Margin="5,0,0,0">
+            <TabControl SelectionChanged="TabControl_SelectionChanged"
+                        BorderThickness="0">
+                <TabItem Header="Principal" Width="80">
+                    <!-- Conteúdo da primeira aba -->
+                    <!-- <TextBlock Text="Conteúdo de modelagem." /> -->
+                </TabItem>
+                <TabItem Header="Ajuda" Width="60">
+                    <!-- Conteúdo da segunda aba -->
+                    <!-- <TextBlock Text="Conteúdo de desenho." /> -->
+                </TabItem>
+                <TabItem Header="Sobre" Width="60">
+                    <!-- Conteúdo da segunda aba -->
+                    <!-- <TextBlock Text="Conteúdo de catalogo." /> -->
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal"
+                    Margin="5,10,0,0"
+                    >
+            <Frame
+                x:Name="ContainerAbas"
+                NavigationUIVisibility="Hidden"
+                MinWidth="225"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

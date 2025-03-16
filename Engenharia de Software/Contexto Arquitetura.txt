@@ -1,0 +1,31 @@
+Helpers:
+	CorelHelper.cs
+	DxfHelper.cs
+
+
+Models:
+	Peca.cs
+
+
+Resources:
+	Logo 300px - Quadrada Borda Branco.png
+	Logo 300px - Quadrada Borda Transp.png
+
+
+Services:
+
+	PrincipalService.cs
+
+Styles:
+
+
+
+ViewModels:
+	PrincipalViewModel.cs
+
+
+Views:
+	PrincipalView.xaml
+	PrincipalView.xaml.cs
+
+

@@ -1,0 +1,22 @@
+PrincipalService.cs:
+-------------------------
+
+using IS_Studio_Miniaturas.Helpers;
+
+namespace IS_Studio_Miniaturas.Services
+{
+    public class PrincipalService
+    {
+        private readonly CorelHelper _corelHelper;
+
+
+        // Construtor
+        public PrincipalService()
+        {
+            _corelHelper = new CorelHelper();
+        }
+    }
+}
+
+
+##############################################################################################################
